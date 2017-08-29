@@ -8,6 +8,7 @@ import { Page2Component } from './page2/page2.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CardsComponent } from './cards/cards.component';
 import { FlotComponent } from './charts/flot/flot.component';
+import { ViewBagService } from './view-bag.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { FlotComponent } from './charts/flot/flot.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ViewBagService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
