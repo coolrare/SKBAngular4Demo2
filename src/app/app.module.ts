@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +10,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CardsComponent } from './cards/cards.component';
 import { FlotComponent } from './charts/flot/flot.component';
 import { ViewBagService } from './view-bag.service';
+import { Form1Component } from './form1/form1.component';
+import { Form2Component } from './form2/form2.component';
 
 @NgModule({
   declarations: [
@@ -17,10 +20,13 @@ import { ViewBagService } from './view-bag.service';
     Page2Component,
     DashboardComponent,
     CardsComponent,
-    FlotComponent
+    FlotComponent,
+    Form1Component,
+    Form2Component
   ],
   imports: [
     BrowserModule,
+    FormsModule, ReactiveFormsModule,
     AppRoutingModule
   ],
   providers: [ViewBagService],
