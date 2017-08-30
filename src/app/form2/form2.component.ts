@@ -1,5 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators, FormArray, AbstractControl } from "@angular/forms";
+
+function MustContainsTaipei(c: AbstractControl) {
+  if (c.value.indexOf('Taipei') >= 0) {
+    return null;
+  }
+  else {
+    return {
+      'must-contains-taipei': true
+    }
+  }
+}
 
 @Component({
   selector: 'app-form2',
@@ -20,8 +31,8 @@ export class Form2Component implements OnInit {
       }),
 
       addresses: this.fb.array([
-        this.fb.control('', [Validators.required]),
-        this.fb.control('', [Validators.required])
+        this.fb.control('', [Validators.required, MustContainsTaipei]),
+        this.fb.control('', [Validators.required, MustContainsTaipei])
       ])
 
     });
@@ -29,10 +40,26 @@ export class Form2Component implements OnInit {
   }
 
   ngOnInit() {
+    let obj = {
+      "title": "Will 123",
+      "group1": {
+        "subtitle": "Hello"
+      },
+      "addresses": [
+        "Taipei",
+        "Kaoshuang"
+      ]
+    };
+    this.form.reset(obj);
   }
 
   addNewAddress() {
     var addresses = this.form.get('addresses') as FormArray;
-    addresses.push(this.fb.control('', [Validators.required]));
+    addresses.push(this.makeControl(''));
   }
+
+  makeControl(defaultValue) {
+    return this.fb.control(defaultValue, [Validators.required]);
+  }
+
 }
