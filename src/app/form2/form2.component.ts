@@ -14,7 +14,11 @@ export class Form2Component implements OnInit {
 
     this.form = this.fb.group({
       title: ['Will', [Validators.required, Validators.minLength(3)]],
-      subtitle: ['Hello', [Validators.required]]
+
+      group1: this.fb.group({
+        subtitle: ['Hello', [Validators.required]]
+      })
+
     });
 
   }
